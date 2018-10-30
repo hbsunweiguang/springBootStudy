@@ -1,0 +1,9 @@
+首先在pom.xml配置文件导入jar包cn.wisdsoft.spring4.ch1.di start
+
+在Spring4.x中，建议使用Java配置方式，该方式不需要在添加xml配置文件。
+FunctionService提供sayhello方法
+UseFunctionService调用FunctionService中sayhello方法
+DiConfig为配置类，代替了Spring原有的xml配置文件
+Main类为运行类，先读取DiConfig类，从Spring的Bean中创建UseFunctionService对象，调用sayHello方法
+
+整个过程都是用注解方式配置
