@@ -20,12 +20,21 @@
     </properties>
 
     <dependencies>
+        <!-- cn.wisdsoft.spring4.ch3.fortest start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.18.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- cn.wisdsoft.spring4.ch3.fortest end -->
+
         <!-- cn.wisdsoft.spring4.ch1.di start -->
         <!-- spring context基础jar包 -->
         <dependency>
