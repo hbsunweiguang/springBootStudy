@@ -98,6 +98,19 @@
             <version>${logback.version}</version>
         </dependency>
 
+        <!-- 添加jackson及相关依赖，获得对象和json或xml之间的转换 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+
+
         <!-- cn.wisdsoft.spring4.ch3.fortest start -->
         <dependency>
             <groupId>org.springframework</groupId>
