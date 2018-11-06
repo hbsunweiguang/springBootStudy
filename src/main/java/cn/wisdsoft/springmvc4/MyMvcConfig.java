@@ -69,6 +69,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         //添加转向upload的ViewController
         registry.addViewController("toUpload").setViewName("/upload");
         registry.addViewController("/converter").setViewName("/converter");
+        registry.addViewController("/sse").setViewName("/sse");
     }
 
     //路径匹配参数配置
