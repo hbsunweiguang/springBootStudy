@@ -2,6 +2,7 @@ package cn.wisdsoft.springmvc4;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
@@ -25,6 +26,13 @@ public class WebInitializer implements WebApplicationInitializer {
         ctx.register(MyMvcConfig.class);
         //新建WebApplicationContext，注册配置类，并将其和当前的servletContext关联
         ctx.setServletContext(servletContext);
+
+        //解决中文乱码的filter
+        javax.servlet.FilterRegistration.Dynamic encodingFilter = servletContext.addFilter("encodingFilter",CharacterEncodingFilter.class);
+        encodingFilter.setInitParameter("forceEncoding", "true");
+        encodingFilter.setInitParameter("encoding","UTF-8");
+        encodingFilter.addMappingForUrlPatterns(null,true,"/*");
+
         //注册Spring MVC的DisparcherServlet
         Dynamic servlet = servletContext.addServlet("dispatcher",new DispatcherServlet(ctx));
         servlet.addMapping("/");
