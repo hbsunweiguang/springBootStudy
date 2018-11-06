@@ -1,14 +1,18 @@
 package cn.wisdsoft.springmvc4;
 
 import cn.wisdsoft.springmvc4.interceptor.DemoInterceptor;
+import cn.wisdsoft.springmvc4.messageconverter.MyMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import java.util.List;
 
 /**
  * <p>ClassName: MyMvcConfig</p>
@@ -40,6 +44,16 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         return multipartResolver;
     }
 
+    //自定义HttpMessageconverter转换
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(converter());
+    }
+
+    public MyMessageConverter converter(){
+        return new MyMessageConverter();
+    }
+
     //静态资源映射
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -54,6 +68,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/index").setViewName("/index");
         //添加转向upload的ViewController
         registry.addViewController("toUpload").setViewName("/upload");
+        registry.addViewController("/converter").setViewName("/converter");
     }
 
     //路径匹配参数配置
